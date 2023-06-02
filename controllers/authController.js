@@ -7,17 +7,25 @@ module.exports.getUpdatePage = (req, res) => {
 };
 
 // update by id...
-module.exports.updatePostbyId = (req, res) => {
+module.exports.updatePostbyId = async (req, res) => {
   res.send('update post request depend on id');
-  //   const { val1, val2, val3 } = req.body;
+  //   const { deviceId, deviceType,  currentVersion, values } = req.body;
   //   const id = req.params;
-  //   DataCollection.findOneAndUpdate(id, {});
+  const deviceVersion = await DataCollection.findOne({ deviceId: id })
+    .deviceVersion;
+  if (deviceVersion != currentVersion) {
+    deviceVersion = currentVersion;
+    DataCollection.findOneAndUpdate(id, {});
+  } else {
+    DataCollection.findOneAndUpdate(id, {});
+  }
+  //
 };
 
 // update by type...
 module.exports.updatePostbyType = (req, res) => {
   res.send('update post request depend on Type');
-  //   const { val1, val2, val3 } = req.body;
+  //   const { deviceId, deviceType, values } = req.body;
   //   const type = req.params;
-  //   DataCollection.findOneAndUpdate(type, {});
+  DataCollection.findOneAndUpdate(type, {}).forEach((data) => {});
 };
