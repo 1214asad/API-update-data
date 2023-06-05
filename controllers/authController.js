@@ -27,5 +27,7 @@ module.exports.updatePostbyType = (req, res) => {
   res.send('update post request depend on Type');
   //   const { deviceId, deviceType, values } = req.body;
   //   const type = req.params;
-  DataCollection.findOneAndUpdate(type, {}).forEach((data) => {});
+  DataCollection.find({ deviceType: type }).forEach((data) => {
+    const id = data._id;
+  });
 };
